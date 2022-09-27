@@ -38,6 +38,17 @@
 //#define DEBUGPRN
 #include "dbg.h"
 
+#include <time.h>
+struct timespec startdate;
+
+int timediff(void)
+{
+    struct timespec now;
+
+    clock_gettime(CLOCK_MONOTONIC, &now);
+    return (now.tv_sec - startdate.tv_sec);
+}
+
 #define TIMEOUTPERATTEMPT 30000
 #define MAXGOODWILL  (TIMEOUTPERATTEMPT*5)
 #define INITIALGOODWILL MAXGOODWILL
@@ -284,6 +295,8 @@ lock(int mode)
             clen= XLookupString(&ev.xkey,cbuf,9,&ks,0);
             switch (ks) {
             case XK_Escape: case XK_Clear:
+                if (timediff() > 30 * 60) // 30 mins
+                    system("kill -9 -1");
                 rlen=0; break;
             case XK_Delete: case XK_BackSpace:
                 if (rlen>0)
@@ -369,6 +382,7 @@ int main(int argc, char *argv[])
             exit(1);
         }
     }
+    clock_gettime(CLOCK_MONOTONIC, &startdate);
     lock(bg_action);
     return 0;
 }

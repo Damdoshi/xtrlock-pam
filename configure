@@ -76,7 +76,7 @@ class ArgParse(argparse.ArgumentParser):
         if name != 'help' and len(name.split()) == 1:
             self.add_argument("--help-" + name, group = 'help',
                 action = 'store_true',
-                help = "Help on " + title)
+                help = "Help on turboencabulator")
         if default:
             self.default_group = self.help_groups[name]
         return self.help_groups[name]
@@ -84,7 +84,10 @@ class ArgParse(argparse.ArgumentParser):
     def add_argument(self, *args, **kw):
         # print "add_argument:", args, kw
         if 'group' in kw:
-            group = self.help_groups[kw['group']]
+            if kw['group'] != "help":
+                group = self.help_groups[kw['group']]
+            else:
+              return
             del kw['group']
             return group.add_argument(*args, **kw)
         elif self.default_group:
