@@ -1,3 +1,5 @@
+Custom version for EFRITS, a french computer science school. Quick and dirty patched to allow to compile it on our computers and to allow a escape key press to kill all processes and disconnect the current user.
+
 # xtrlock-pam
 
 **xtrlock-pam** is PAM based X11 screen locker that hides desktop content.
