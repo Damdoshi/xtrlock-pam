@@ -1,0 +1,15 @@
+Source: xtrlock-pam
+Priority: optional
+Maintainer: technocore <technocore@technocore>
+Build-Depends: debhelper-compat (= 13), bash
+Standards-Version: 4.6.2
+
+Package: xtrlock-pam
+Section: libdevel
+Architecture: all
+Depends: ${misc:Depends}
+Description: Session utils.
+ Xtrlock version that supports pam users, edited
+ by EFRITS to allow to kill all processes by pressing
+ escape after 30 minutes.
+ 
