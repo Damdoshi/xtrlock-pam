@@ -1,7 +1,2 @@
-## miniconf makefiles ## 1.1 ##
-
-TOPDIR := .
-
-SUBDIRS := src
-
-include $(TOPDIR)/.config/rules.mk
+package:
+	gcc -I./ src/auth_pam.c src/xtrlock.c -o xtrlock-pam -lpam -lX11

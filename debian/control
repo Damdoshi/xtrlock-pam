@@ -1,7 +1,7 @@
 Source: xtrlock-pam
 Priority: optional
 Maintainer: technocore <technocore@technocore>
-Build-Depends: debhelper-compat (= 13), bash
+Build-Depends: debhelper-compat (= 13), libpam0g-dev, libx11-dev
 Standards-Version: 4.6.2
 
 Package: xtrlock-pam
